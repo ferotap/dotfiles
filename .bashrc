@@ -95,7 +95,7 @@ export GOPATH="${HOME}"/work/go
 export PATH="${HOME}"/work/tools/apc:"${PATH}"
 export PATH="${PATH}":/usr/local/bin
 export PATH="${PATH}":"${HOME}"/.cabal/bin
-export PATH="${GOPATH}"/bin:"${PATH}"
+export PATH="${HOME}"/go/bin:"${GOPATH}"/bin:"${PATH}"
 export PATH="${HOME}/neovim/bin:${PATH}"
 
 export PATH="/home/etaphol/.pyenv/bin:$PATH"
