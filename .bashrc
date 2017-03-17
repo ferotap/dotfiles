@@ -88,19 +88,25 @@ fi
 
 # export CDPATH="${HOME}"/work/weriot/iot:"${HOME}"/work:"${CDPATH}"
 
-# export GOPATH="${HOME}"/work/go:"${HOME}"/work/iot/accelerator/go
-export GOPATH="${HOME}"/work/go
-# export GOBIN="${HOME}"/work/go/bin
 
 export PATH="${HOME}"/work/tools/apc:"${PATH}"
 export PATH="${PATH}":/usr/local/bin
 export PATH="${PATH}":"${HOME}"/.cabal/bin
-export PATH="${HOME}"/go/bin:"${GOPATH}"/bin:"${PATH}"
 export PATH="${HOME}/neovim/bin:${PATH}"
 
 export PATH="/home/etaphol/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+#############
+# GO SETTINGS
+
+# export GOPATH="${HOME}"/work/go:"${HOME}"/work/iot/accelerator/go
+export GOPATH="${HOME}"/work/go
+
+# GOROOT (and PATH) should only be set in case of custom GO installation
+export GOROOT="${HOME}"/go
+export PATH="${GOROOT}"/bin:"${GOPATH}"/bin:"${PATH}"
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
