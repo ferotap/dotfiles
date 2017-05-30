@@ -107,7 +107,7 @@ export GOPATH="${HOME}"/work/iot/accelerator/go
 export GOROOT="${HOME}"/go
 export PATH="${GOROOT}"/bin:"${GOPATH}"/bin:"${PATH}"
 
-export CDPATH="${GOPATH}"/src:"${HOME}"/work:"${CDPATH}"
+export CDPATH=".:${GOPATH}/src:${HOME}/work/iot/accelerator:${CDPATH}"
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
