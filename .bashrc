@@ -100,19 +100,23 @@ eval "$(pyenv virtualenv-init -)"
 #############
 # GO SETTINGS
 
-export GOPATH="${HOME}"/work/iot/accelerator/go
+export GOPATH="${HOME}"/work/accelerator/go
 # export GOPATH="${HOME}"/work/go
 
 # GOROOT (and PATH) should only be set in case of custom GO installation
 export GOROOT="${HOME}"/go
 export PATH="${GOROOT}"/bin:"${GOPATH}"/bin:"${PATH}"
 
-export CDPATH=".:${GOPATH}/src:${HOME}/work/iot/accelerator:${CDPATH}"
+export CDPATH=".:${GOPATH}/src:${HOME}/work/accelerator:${CDPATH}"
+
+# cd aliases
+alias cdp='cd ${HOME}/work/accelerator'
+alias cdg='cd ${GOPATH}'
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
+# some ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -126,11 +130,16 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
+# shellcheck disable=SC1090
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# shellcheck disable=SC1090
 [ -f ~/.config/bash/functions.sh ] && source ~/.config/bash/functions.sh
+
+# link $HOME/work/accelerator to $HOME/work/accelerator1
+# proj 1
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -145,9 +154,11 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# export NVM_DIR="/home/etaphol/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 export PATH=$PATH:/home/etaphol/bin
 
 source '/home/etaphol/lib/azure-cli/az.completion'
+
+export NVM_DIR="/home/etaphol/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
