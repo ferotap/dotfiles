@@ -20,6 +20,11 @@ URxvt.secondaryScroll: 0
 *font: 9x15
 ! *letterSpace: -1
 
+URxvt.perl-ext-common: default,matcher
+
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Colors
 #define S_base03        #002b36

@@ -107,12 +107,14 @@ export GOPATH="${HOME}"/work/accelerator/go
 export GOROOT="${HOME}"/go
 export PATH="${GOROOT}"/bin:"${GOPATH}"/bin:"${PATH}"
 
-export CDPATH=".:${GOPATH}/src:${HOME}/work/accelerator:${CDPATH}"
+export CDPATH=".:${GOPATH}/src/ericsson.com/iota:${HOME}/work/accelerator:${CDPATH}"
 
 # cd aliases
 alias cdp='cd ${HOME}/work/accelerator'
 alias cdg='cd ${GOPATH}'
+alias cde='cd ${GOPATH}/src/ericsson.com/iota'
 
+alias nv='TERM="" nvim'
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
