@@ -94,8 +94,10 @@ export PATH="${PATH}":"${HOME}"/.cabal/bin
 export PATH="${HOME}/neovim/bin:${PATH}"
 
 export PATH="/home/etaphol/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if ! [ -x "$(command -v git)" ]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
 #############
 # GO SETTINGS
@@ -158,7 +160,10 @@ fi
 
 export PATH=$PATH:/home/etaphol/bin
 
-source '/home/etaphol/lib/azure-cli/az.completion'
+# TODO: chec az location
+if [ -f ~/lib/azure-cli/az.completion ]; then
+    source '/home/etaphol/lib/azure-cli/az.completion'
+fi
 
 export NVM_DIR="/home/etaphol/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
