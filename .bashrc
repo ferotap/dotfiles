@@ -92,13 +92,7 @@ export PATH="${HOME}"/work/tools/apc:"${PATH}"
 export PATH="${PATH}":/usr/local/bin
 export PATH="${PATH}":"${HOME}"/.cabal/bin
 export PATH="${HOME}/neovim/bin:${PATH}"
-
-export PYENV_ROOT="${HOME}"/.pyenv
-export PATH="$PYENV_ROOT/bin:$PATH"
-if ! [ -x "$(command -v pyenv)" ]; then
-    eval "$(pyenv init -)"
-    # eval "$(pyenv virtualenv-init -)"
-fi
+export PATH="${HOME}/.node_modules_global/bin:${PATH}"
 
 #############
 # GO SETTINGS
@@ -126,6 +120,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# swaggger-editor
+alias sw='docker run -d -p 80:8080 swaggerapi/swagger-editor'
+
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -142,6 +139,8 @@ fi
 
 # shellcheck disable=SC1090
 [ -f ~/.config/bash/functions.sh ] && source ~/.config/bash/functions.sh
+
+[ -f ~/.devenv.sh ] && source ~/.devenv.sh
 
 # link $HOME/work/accelerator to $HOME/work/accelerator1
 # proj 1
@@ -165,6 +164,18 @@ export PATH=$PATH:/home/etaphol/bin
 if [ -f ~/lib/azure-cli/az.completion ]; then
     source '/home/etaphol/lib/azure-cli/az.completion'
 fi
+
+if [ -f ~/.kube/completion.bash.inc ]; then
+    source ~/.kube/completion.bash.inc
+fi
+
+# pyenv settings
+export PYENV_ROOT="${HOME}"/.pyenv
+export PATH="$PYENV_ROOT/bin:$PATH"
+# if ! [ -x "$(command -v pyenv)" ]; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+# fi
 
 export NVM_DIR="/home/etaphol/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
