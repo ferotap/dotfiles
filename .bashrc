@@ -95,22 +95,10 @@ export PATH="${PATH}":"${HOME}"/.cabal/bin
 export PATH="${HOME}/neovim/bin:${PATH}"
 export PATH="${HOME}/.node_modules_global/bin:${PATH}"
 
-#############
-# GO SETTINGS
-
-export GOPATH="${HOME}"/work/accelerator/go
-# export GOPATH="${HOME}"/work/go
-
-# GOROOT (and PATH) should only be set in case of custom GO installation
-export GOROOT="${HOME}"/go
-export PATH="${GOROOT}"/bin:"${GOPATH}"/bin:"${PATH}"
-
-export CDPATH=".:${GOPATH}/src/ericsson.com/iota:${HOME}/work/accelerator:${CDPATH}"
+export CDPATH=".:${HOME}/work:"
 
 # cd aliases
-alias cdp='cd ${HOME}/work/accelerator'
 alias cdg='cd ${GOPATH}'
-alias cde='cd ${GOPATH}/src/ericsson.com/iota'
 
 alias nv='TERM="" nvim'
 # colored GCC warnings and errors
@@ -160,9 +148,14 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export PATH=$PATH:/home/etaphol/bin
+source ~/venv/p3/bin/activate
 
 localbash="${HOME}"/.bashrc.local
 if [ -f "$localbash" ]; then
     source "${localbash}"
 fi
 xrdb -merge ~/.Xresources
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/tapio/.sdkman"
+[[ -s "/home/tapio/.sdkman/bin/sdkman-init.sh" ]] && source "/home/tapio/.sdkman/bin/sdkman-init.sh"
