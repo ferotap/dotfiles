@@ -42,7 +42,7 @@ floating_modifier $mod
 bindsym $mod+Return exec urxvt
 
 # screen lock
-bindsym $mod+Shift+s exec i3lock -c 000000
+bindsym $mod+Shift+s exec i3lock -c 000000  && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true
 
 # kill focused window
 bindsym $mod+Shift+q kill
