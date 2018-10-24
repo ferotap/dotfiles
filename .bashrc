@@ -58,7 +58,12 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    export PS1='[\t]\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]$(__git_ps1)\n\$ '
+    if [ $(git --version | head -n1 | cut -d" " -f3) \< "2.0.0" ]; then
+        export PS1='[\t]\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]\n\$ '
+    else
+        export PS1='[\t]\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]$(__git_ps1)\n\$ '
+    fi
+
     # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -147,14 +152,12 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-export PATH=$PATH:/home/etaphol/bin
 source ~/venv/p3/bin/activate
 
 localbash="${HOME}"/.bashrc.local
 if [ -f "$localbash" ]; then
     source "${localbash}"
 fi
-xrdb -merge ~/.Xresources
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/tapio/.sdkman"
