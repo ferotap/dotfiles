@@ -17,7 +17,8 @@ URxvt.secondaryScroll: 0
 !
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !Font
-*font: 9x15
+! *font: 9x15
+*.font:	Liberation Mono:pixelsize=15:antialias=true:autohint=true;
 ! *letterSpace: -1
 
 URxvt.perl-ext-common: default,matcher,font-size

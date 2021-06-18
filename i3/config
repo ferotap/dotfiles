@@ -39,7 +39,9 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt
+# bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec st
+bindsym $mod+Shift+t exec termite
 
 # suspend & screen lock
 bindsym $mod+Shift+s exec i3lock -c 000000  && dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true
@@ -170,8 +172,8 @@ mode "launcher" {
         bindsym d exec firefox-developer-edition
         bindsym s exec slack
         bindsym g exec google-chrome
-        bindsym m exec google-chrome https://outlook.office365.com/owa/?realm=ddl.internal.ericsson.com&path=/attachmentlightbox
-        bindsym t exec gnome-terminal
+        bindsym t exec termite
+        # bindsym t exec gnome-terminal
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
