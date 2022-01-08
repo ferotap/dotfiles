@@ -8,7 +8,8 @@ case $- in
       *) return;;
 esac
 
-
+setxkbmap -layout fi,us
+setxkbmap -option 'grp:shift_caps_toggle'
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -44,7 +45,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=yes
+#force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -58,13 +59,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    if [ $(git --version | head -n1 | cut -d" " -f3) \< "2.0.0" ]; then
-        export PS1='[\t]\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]\n\$ '
-    else
-        export PS1='[\t]\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]$(__git_ps1)\n\$ '
-    fi
-
-    # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    export PS1='[\t]\[\033[32m\]\u@\h\[\033[00m\]:\[\033[34m\]\w\[\033[00m\]$(__git_ps1)\n\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -72,7 +67,7 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+xterm*|rxvt*|*-256color)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
@@ -81,7 +76,6 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-# shellcheck disable=SC2015
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
@@ -92,30 +86,13 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-
-
-export PATH="${HOME}"/work/tools/apc:"${PATH}"
-export PATH="${PATH}":/usr/local/bin
-export PATH="${PATH}":"${HOME}"/.cabal/bin
-export PATH="${HOME}/neovim/bin:${PATH}"
-export PATH="${HOME}/.node_modules_global/bin:${PATH}"
-
-export CDPATH=".:${HOME}/work:"
-
-# cd aliases
-alias cdg='cd ${GOPATH}'
-
-alias nv='TERM="" nvim'
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some ls aliases
+# some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-
-# swaggger-editor
-alias sw='docker run -d -p 80:8080 swaggerapi/swagger-editor'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -126,18 +103,12 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-# shellcheck disable=SC1090
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.bash_alias.sh ]; then
+    source ~/.bash_alias.sh
 fi
-
-# shellcheck disable=SC1090
-[ -f ~/.config/bash/functions.sh ] && source ~/.config/bash/functions.sh
-
-[ -f ~/.devenv.sh ] && source ~/.devenv.sh
-
-# link $HOME/work/accelerator to $HOME/work/accelerator1
-# proj 1
+if [ -f ~/.bashrc.loca ]; then
+    source ~/.bashrc.local
+fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -151,14 +122,7 @@ if ! shopt -oq posix; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# [ -f ~/.Xresources ] && xrdb -merge  ~/.Xresources
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-source ~/venv/p3/bin/activate
-
-localbash="${HOME}"/.bashrc.local
-if [ -f "$localbash" ]; then
-    source "${localbash}"
-fi
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/tapio/.sdkman"
-[[ -s "/home/tapio/.sdkman/bin/sdkman-init.sh" ]] && source "/home/tapio/.sdkman/bin/sdkman-init.sh"
