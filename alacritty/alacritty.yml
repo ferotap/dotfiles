@@ -93,7 +93,10 @@ schemes:
       cyan:    '#93a1a1' # base1
       white:   '#fdf6e3' # base3
 
-colors: *dark
+import:
+  - ./tokyonight_night.yml
+  # - ./alacritty-colorscheme/themes/{scheme_name}.yaml
+# colors: *dark
 
 key_bindings:
     # (Windows, Linux, and BSD only)
