@@ -1,7 +1,7 @@
 # #################
 # Settings by Tapio
 
-focus_follows_mouse no
+Focus_follows_mouse no
 
 # Settings by Tapio
 # #################
@@ -173,6 +173,7 @@ mode "launcher" {
         bindsym s exec slack
         bindsym g exec google-chrome
         bindsym t exec termite
+        bindsym k exec eog ~/work/eurkey_layout.png
         # bindsym t exec gnome-terminal
 
         # back to normal: Enter or Escape
