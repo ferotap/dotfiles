@@ -1,5 +1,5 @@
 env:
-  term: x256_color
+  term: xterm-256color
 font:
   normal:
     family: "Hack Nerd Font"

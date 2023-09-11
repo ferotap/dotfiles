@@ -1,5 +1,6 @@
 alias avim='NVIM_APPNAME=astronvim nvim'
 alias bvim='NVIM_APPNAME=nvim-basic-ide nvim'
-alias lazyvim='NVIM_APPNAME=LazyVim nvim'
+alias lvim='NVIM_APPNAME=LazyVim nvim'
 alias kvim='NVIM_APPNAME=kickstart.nvim nvim'
 alias mvim='NVIM_APPNAME=modern-neovim nvim'
+alias myvim='NVIM_APPNAME=myvim nvim'
