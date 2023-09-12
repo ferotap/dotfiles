@@ -26,7 +26,7 @@ cursor:
   blink_interval: 500
 
 import:
-  - ~/.config/alacritty/tokyonight_night.yml
+  - ~/.config/alacritty/catppuccin-mocha.yml
   # - ~/.config/alacritty/gruvbox_material_medium_dark.yaml
 
 key_bindings:
