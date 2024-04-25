@@ -26,6 +26,7 @@ cursor:
   blink_interval: 500
 
 import:
+  # - ~/.config/alacritty/catppuccin-frappe.yml
   - ~/.config/alacritty/catppuccin-mocha.yml
   # - ~/.config/alacritty/gruvbox_material_medium_dark.yaml
 
