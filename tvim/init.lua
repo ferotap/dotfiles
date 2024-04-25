@@ -11,6 +11,7 @@ ET_SPEC "et.plugins.java"
 
 ET_SPEC "et.plugins.neotree"
 ET_SPEC "et.plugins.lualine"
+ET_SPEC "et.plugins.telescope"
 
 require "et.plugins.lazy"
 
