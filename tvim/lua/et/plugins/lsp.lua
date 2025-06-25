@@ -47,7 +47,24 @@ return {
             },
           },
         },
-        jdtls = true,
+        jdtls = {
+          settings = {
+            java = {
+              configuration = {
+                runtimes = {
+                  {
+                    name = "JavaSE-17",
+                    path = "/opt/kela/java/default",
+                    default = true,
+                  },
+                },
+              },
+            },
+          },
+        },
+        lemminx = {
+          settings = {}
+        },
         lua_ls = {
           server_capabilities = {
             semanticTokensProvider = vim.NIL,
@@ -142,10 +159,11 @@ return {
 
       require("mason").setup()
       local ensure_installed = {
-        "stylua",
-        "lua_ls",
         "delve",
         "jdtls",
+        "lemminx",
+        "lua_ls",
+        "stylua",
       }
 
       vim.list_extend(ensure_installed, servers_to_install)

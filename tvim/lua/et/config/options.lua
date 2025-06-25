@@ -70,5 +70,6 @@ vim.o.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
 vim.g.markdown_recommended_style = 0
 vim.o.hlsearch = false
 
+vim.g.python3_host_prog = vim.fn.expand("$HOME/.pyenv/versions/3.11.5/bin/python3")
 -- Enable break indent
 -- vim.o.breakindent = true
